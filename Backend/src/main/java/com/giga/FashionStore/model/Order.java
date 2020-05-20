@@ -25,6 +25,7 @@ public class Order {
     private String address;
     private Date order_timestamp;
 
+    //constructor
     public Order(String order_Id, SiteUser siteUser, List<OrderProduct> products, String paymentRefID, String deliveryMethod, String address, Date order_timestamp) {
         this.order_Id = order_Id;
         this.siteUser = siteUser;
