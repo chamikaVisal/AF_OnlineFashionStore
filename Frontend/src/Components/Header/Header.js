@@ -4,7 +4,6 @@ import "./Header.css";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Badge from "@material-ui/core/Badge";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -67,8 +66,9 @@ class ConnectedHeader extends Component {
               <Button
                   style={{
                     marginLeft: 20,
-                    fontSize: 20,
-                    color: "red"
+                    fontSize: 30,
+                    color: "black",
+
                   }}
                   color="primary"
                   onClick={() => {
@@ -78,13 +78,14 @@ class ConnectedHeader extends Component {
                 {" "}
                 Fashion Store
               </Button>
-              {/*
+
             <img
               src={cartImage}
               alt={"Logo"}
               style={{ marginLeft: 10 }}
 
             />
+                {/*
             <TextField
               label="Search products"
               value={this.state.searchTerm}
@@ -131,7 +132,7 @@ class ConnectedHeader extends Component {
               {!this.props.loggedInUser ? (
                   <div className="verticle-row">
                     <Button
-                        variant="outlined"
+                        variant="contained"
                         style={{ marginRight: 5 }}
                         color="primary"
                         onClick={() => {
