@@ -85,48 +85,6 @@ class ConnectedHeader extends Component {
               style={{ marginLeft: 10 }}
 
             />
-                {/*
-            <TextField
-              label="Search products"
-              value={this.state.searchTerm}
-              onChange={e => {
-                this.setState({ searchTerm: e.target.value });
-              }}
-              style={{ marginLeft: 30, width: 250, marginBottom: 15 }}
-            />
-
-            <Select
-              style={{ maxWidth: 200, marginLeft: 20 }}
-              value={this.state.categoryFilterValue}
-              MenuProps={{
-                style: {
-                  maxHeight: 500
-                }
-              }}
-              onChange={e => {
-                this.setState({ categoryFilterValue: e.target.value });
-              }}
-            >
-              {categoryOptions}
-            </Select>
-
-            <Button
-              style={{ marginLeft: 20 }}
-              variant="outlined"
-              color="primary"
-              onClick={() => {
-                this.props.history.push(
-                  "/?category=" +
-                  this.state.categoryFilterValue +
-                  "&term=" +
-                  this.state.searchTerm
-                );
-              }}
-            >
-              {" "}
-              Search
-            </Button>
-            */}
             </div>
             <div className="right-part">
               {!this.props.loggedInUser ? (
