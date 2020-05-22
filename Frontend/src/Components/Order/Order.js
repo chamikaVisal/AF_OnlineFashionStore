@@ -13,6 +13,10 @@ import { showAlertDialog} from "../../Redux/Actions";
 //axios
 import axios from 'axios';
 
+import CardActionArea from "@material-ui/core/es/CardActionArea/CardActionArea";
+import Card from "@material-ui/core/es/Card/Card";
+import LocalMallIcon from '@material-ui/icons/LocalMall';
+import Footer from "./Components/Footer/Footer";
 
 //Get the state from redux store.
 const mapStateToProps = state => {
@@ -89,9 +93,44 @@ class ConnectedOrder extends Component {
             return accumulator + item.price * item.quantity;
         }, 0);
 
+        const cardStyle={
+            width: 400,
+            height: 550,
+            marginLeft: 450,
+            marginTop: 100,
+        }
+
+        const textfield={
+            width: 300,
+        }
+
+        const textfieldrest={
+            width: 300,
+            marginTop: 2
+        }
+
+
+        return (
+
+            <Card style={cardStyle}>
+                <CardActionArea>
+            <div>
+                <div style={{
+                    marginTop: 20,
+                    fontSize: 24,
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+
+                    alignItems: "center",
+                }}>
+                    <LocalMallIcon></LocalMallIcon>
+
+
         return (
             <div style={{ padding: 10 }}>
                 <div style={{ fontSize: 24, marginTop: 10 }}>
+
                     Order Information
                 </div>
 
@@ -99,14 +138,25 @@ class ConnectedOrder extends Component {
                     style={{
                         height: "100%",
                         display: "flex",
+
+                        marginLeft: 50,
+
                         marginLeft: 15,
+
                         flexDirection: "column"
                     }}
                 >
                     <div
                         style={{
+
+                            marginTop: 20,
                             width: 150,
                             padding: 10,
+                            paddingLeft: 80,
+
+                            width: 150,
+                            padding: 10,
+
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -115,22 +165,88 @@ class ConnectedOrder extends Component {
                         }}
                     >
                         <TextField
+
+                            style={textfield}
+                            id="filled-basic"
+                            label="Shipping address"
+                            variant="filled"
+                            value={this.state.address}
+
                             style={{ width: 200, marginLeft: 50 }}
                             value={this.state.address}
                             placeholder="Shipping address"
+
                             onChange={e => {
                                 this.setState({ address: e.target.value });
                             }}
                         />
+
+
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="Delivery method"
+                            variant="filled"
+                            value={this.state.delivery}
+
                         <TextField
                             style={{ width: 200, marginLeft: 50 }}
                             value={this.state.delivery}
                             placeholder="Delivery method"
+
                             onChange={e => {
                                 this.setState({ delivery: e.target.value });
                             }}
                         />
                         <TextField
+
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="City"
+                            variant="filled"
+                            value={this.state.city}
+                            onChange={e => {
+                                this.setState({ city: e.target.value });
+                            }}
+                        />
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="ZIP"
+                            variant="filled"
+                            value={this.state.zip}
+                            onChange={e => {
+                                this.setState({ zip: e.target.value });
+                            }}
+                        />
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="Phone Number"
+                            variant="filled"
+                            value={this.state.phoneNumber}
+                            onChange={e => {
+                                this.setState({ phoneNumber: e.target.value });
+                            }}
+                        />
+
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="Payment method"
+                            variant="filled"
+                            value={this.state.paymentMethod}
+                            onChange={e => {
+                                this.setState({ paymentMethod: e.target.value });
+                            }}
+                        />
+                    </div>
+                </div>
+
+                <Button
+                    color="primary"
+                    variant="contained"
+
                             style={{ width: 200, marginLeft: 50 }}
                             value={this.state.city}
                             placeholder="City"
@@ -201,6 +317,7 @@ class ConnectedOrder extends Component {
                 <Button
                     color="primary"
                     variant="outlined"
+
                     disabled={(this.state.delivery == '' || this.state.address == '' || this.state.city == '' || this.state.zip == '' || this.state.phoneNumber == '' || this.state.paymentMethod == '') }
                     onClick={() => {
                         this.reOrderCartItems();
@@ -217,13 +334,21 @@ class ConnectedOrder extends Component {
 
                         this.makeTheOrder();
                     }}
+
+                    style={{ margin: 5, marginTop: 30, marginLeft: 90 }}
+
                     style={{ margin: 5, marginTop: 30 }}
+
                 >
                     Purchase
                 </Button>
                 <Button
                     color="secondary"
+
+                    variant="contained"
+
                     variant="outlined"
+
                     //disabled={totalPrice === 0}
                     onClick={() => {
                         this.props.dispatch(setCheckedOutItems([]));
@@ -234,7 +359,17 @@ class ConnectedOrder extends Component {
                     Discard
                 </Button>
             </div>
+
+                </CardActionArea>
+
+
+            </Card>
+
+
+);
+
         );
+
     }
 }
 const Order = withRouter(connect(mapStateToProps)(ConnectedOrder));
