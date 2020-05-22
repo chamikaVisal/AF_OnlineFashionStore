@@ -11,7 +11,7 @@ public class AddDiscountRequest {
     private String productId;
 
     @NotBlank
-    @Size(min = 3, max = 30)
+    @Size(min = 0, max = 30)
     private String discountName;
 
     @NotNull
