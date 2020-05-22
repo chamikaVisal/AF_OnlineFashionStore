@@ -13,7 +13,7 @@ const mapStateToProps = state => {
         loggedInUser: state.loggedInUser
     };
 };
-//discount form
+
 class ConnectedAddDiscountForm extends Component {
 
     constructor(props) {
