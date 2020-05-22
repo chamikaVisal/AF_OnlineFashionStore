@@ -148,11 +148,6 @@ class ConnectedAddProductForm extends Component {
                                     this.setState({
                                         prodImage: e.target.files,
                                     })
-                                    /*
-                                    console.log('Product Image URL');
-                                    console.log(this.state.prodImage);
-                                    */
-
                                 },
                                 this.getBase64
                             }
@@ -162,17 +157,9 @@ class ConnectedAddProductForm extends Component {
                             variant="contained"
                             color= "primary"
                             onClick={() => {
-                                //this.handleProductImage(this.state.prodImage);
-                                /*
-                                //form validation
-                                if (this.state.firstName.trim().length == 0 || this.state.lastName.trim().length == 0 || this.state.email.trim().length == 0 || this.state.password.trim().length == 0) {
-                                    return;
-                                };
-                                */
-                                //initiate signup
+
                                 console.log('At the Add a new product');
                                 console.log(this.state.prodName, this.state.prodDescription, this.state.prodPrice, this.state.prodCategory, this.state.prodImage);
-                                //this.createNewProduct();
                                 this.createNewProduct(this.state.prodName, this.state.prodDescription, this.state.prodPrice, this.state.prodCategory, this.props.loggedInUser.accessToken, this.state.imgUpload)
                             }}
                         >

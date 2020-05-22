@@ -33,20 +33,7 @@ class ConnectedProductsHeader extends Component {
         let keyword = parsedQS.term;
         let categoryId = parsedQS.category;
 
-        /*
-        this.props.categories.map(
-          category => {
-            console.log('categories @ ProductHeader')
-            console.log(category.categoryId);
-            console.log(categoryIdFromLink);
-            if (category.categoryId == categoryIdFromLink) {
-              this.setState({
-                categoryName: category.categoryName
-              })
-            }
-          }
-        )
-          */
+
         let subtitle = (
             <React.Fragment>
         <span style={{ fontSize: 12, color: "gray", marginTop: 5 }}>
