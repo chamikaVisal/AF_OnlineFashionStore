@@ -15,7 +15,7 @@ import axios from 'axios';
 import CardActionArea from "@material-ui/core/es/CardActionArea/CardActionArea";
 import Card from "@material-ui/core/es/Card/Card";
 import LocalMallIcon from '@material-ui/icons/LocalMall';
-
+import Footer from "./Components/Footer/Footer";
 //Get the state from redux store.
 const mapStateToProps = state => {
     return {
@@ -108,153 +108,155 @@ class ConnectedOrder extends Component {
             marginTop: 2
         }
 
+
         return (
+
             <Card style={cardStyle}>
                 <CardActionArea>
-                    <div>
-                        <div style={{
+            <div>
+                <div style={{
+                    marginTop: 20,
+                    fontSize: 24,
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+
+                    alignItems: "center",
+                }}>
+                    <LocalMallIcon></LocalMallIcon>
+
+                    Order Information
+                </div>
+
+                <div
+                    style={{
+                        height: "100%",
+                        display: "flex",
+                        marginLeft: 50,
+                        flexDirection: "column"
+                    }}
+                >
+                    <div
+                        style={{
                             marginTop: 20,
-                            fontSize: 24,
-                            height: "100%",
+                            width: 150,
+                            padding: 10,
+                            paddingLeft: 80,
                             display: "flex",
-                            justifyContent: "center",
-
                             alignItems: "center",
-                        }}>
-                            <LocalMallIcon></LocalMallIcon>
-
-                            Order Information
-                        </div>
-
-                        <div
-                            style={{
-                                height: "100%",
-                                display: "flex",
-                                marginLeft: 50,
-                                flexDirection: "column"
+                            justifyContent: "center",
+                            flexDirection: "column",
+                            marginBottom: 10
+                        }}
+                    >
+                        <TextField
+                            style={textfield}
+                            id="filled-basic"
+                            label="Shipping address"
+                            variant="filled"
+                            value={this.state.address}
+                            onChange={e => {
+                                this.setState({ address: e.target.value });
                             }}
-                        >
-                            <div
-                                style={{
-                                    marginTop: 20,
-                                    width: 150,
-                                    padding: 10,
-                                    paddingLeft: 80,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexDirection: "column",
-                                    marginBottom: 10
-                                }}
-                            >
-                                <TextField
-                                    style={textfield}
-                                    id="filled-basic"
-                                    label="Shipping address"
-                                    variant="filled"
-                                    value={this.state.address}
-                                    onChange={e => {
-                                        this.setState({ address: e.target.value });
-                                    }}
-                                />
+                        />
 
-                                <TextField
-                                    style={textfieldrest}
-                                    id="filled-basic"
-                                    label="Delivery method"
-                                    variant="filled"
-                                    value={this.state.delivery}
-                                    onChange={e => {
-                                        this.setState({ delivery: e.target.value });
-                                    }}
-                                />
-                                <TextField
-                                    style={textfieldrest}
-                                    id="filled-basic"
-                                    label="City"
-                                    variant="filled"
-                                    value={this.state.city}
-                                    onChange={e => {
-                                        this.setState({ city: e.target.value });
-                                    }}
-                                />
-                                <TextField
-                                    style={textfieldrest}
-                                    id="filled-basic"
-                                    label="ZIP"
-                                    variant="filled"
-                                    value={this.state.zip}
-                                    onChange={e => {
-                                        this.setState({ zip: e.target.value });
-                                    }}
-                                />
-                                <TextField
-                                    style={textfieldrest}
-                                    id="filled-basic"
-                                    label="Phone Number"
-                                    variant="filled"
-                                    value={this.state.phoneNumber}
-                                    onChange={e => {
-                                        this.setState({ phoneNumber: e.target.value });
-                                    }}
-                                />
-
-                                <TextField
-                                    style={textfieldrest}
-                                    id="filled-basic"
-                                    label="Payment method"
-                                    variant="filled"
-                                    value={this.state.paymentMethod}
-                                    onChange={e => {
-                                        this.setState({ paymentMethod: e.target.value });
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <Button
-                            color="primary"
-                            variant="contained"
-                            disabled={(this.state.delivery == '' || this.state.address == '' || this.state.city == '' || this.state.zip == '' || this.state.phoneNumber == '' || this.state.paymentMethod == '') }
-                            onClick={() => {
-                                this.reOrderCartItems();
-                                console.log("purchased");
-                                //this.props.dispatch(showAlertDialog(true));
-                                this.setState({
-                                    address: '',
-                                    city: '',
-                                    zip: '',
-                                    phoneNumber: '',
-                                    delivery: '',
-                                    paymentMethod: ''
-                                })
-
-                                this.makeTheOrder();
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="Delivery method"
+                            variant="filled"
+                            value={this.state.delivery}
+                            onChange={e => {
+                                this.setState({ delivery: e.target.value });
                             }}
-                            style={{ margin: 5, marginTop: 30, marginLeft: 90 }}
-                        >
-                            Purchase
-                        </Button>
-                        <Button
-                            color="secondary"
-                            variant="contained"
-                            //disabled={totalPrice === 0}
-                            onClick={() => {
-                                this.props.dispatch(setCheckedOutItems([]));
-                                this.props.history.push("/");
+                        />
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="City"
+                            variant="filled"
+                            value={this.state.city}
+                            onChange={e => {
+                                this.setState({ city: e.target.value });
                             }}
-                            style={{ margin: 5, marginTop: 30 }}
-                        >
-                            Discard
-                        </Button>
+                        />
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="ZIP"
+                            variant="filled"
+                            value={this.state.zip}
+                            onChange={e => {
+                                this.setState({ zip: e.target.value });
+                            }}
+                        />
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="Phone Number"
+                            variant="filled"
+                            value={this.state.phoneNumber}
+                            onChange={e => {
+                                this.setState({ phoneNumber: e.target.value });
+                            }}
+                        />
+
+                        <TextField
+                            style={textfieldrest}
+                            id="filled-basic"
+                            label="Payment method"
+                            variant="filled"
+                            value={this.state.paymentMethod}
+                            onChange={e => {
+                                this.setState({ paymentMethod: e.target.value });
+                            }}
+                        />
                     </div>
+                </div>
+
+                <Button
+                    color="primary"
+                    variant="contained"
+                    disabled={(this.state.delivery == '' || this.state.address == '' || this.state.city == '' || this.state.zip == '' || this.state.phoneNumber == '' || this.state.paymentMethod == '') }
+                    onClick={() => {
+                        this.reOrderCartItems();
+                        console.log("purchased");
+                        //this.props.dispatch(showAlertDialog(true));
+                        this.setState({
+                            address: '',
+                            city: '',
+                            zip: '',
+                            phoneNumber: '',
+                            delivery: '',
+                            paymentMethod: ''
+                        })
+
+                        this.makeTheOrder();
+                    }}
+                    style={{ margin: 5, marginTop: 30, marginLeft: 90 }}
+                >
+                    Purchase
+                </Button>
+                <Button
+                    color="secondary"
+                    variant="contained"
+                    //disabled={totalPrice === 0}
+                    onClick={() => {
+                        this.props.dispatch(setCheckedOutItems([]));
+                        this.props.history.push("/");
+                    }}
+                    style={{ margin: 5, marginTop: 30 }}
+                >
+                    Discard
+                </Button>
+            </div>
                 </CardActionArea>
 
 
             </Card>
 
 
-        );
+);
 
 
     }
