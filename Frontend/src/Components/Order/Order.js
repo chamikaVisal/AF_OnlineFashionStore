@@ -2,21 +2,13 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 import { setCheckedOutItems } from "../../Redux/Actions";
 import TextField from "@material-ui/core/TextField";
-import { showAlertDialog} from "../../Redux/Actions";
 //axios
 import axios from 'axios';
-
 import CardActionArea from "@material-ui/core/es/CardActionArea/CardActionArea";
 import Card from "@material-ui/core/es/Card/Card";
 import LocalMallIcon from '@material-ui/icons/LocalMall';
-import Footer from "./Components/Footer/Footer";
 
 //Get the state from redux store.
 const mapStateToProps = state => {
@@ -85,6 +77,7 @@ class ConnectedOrder extends Component {
                 //window.location.reload(false);
             }, (err) => {
                 console.log('ERROR: placing order failed');
+                alert("something went wrong!");
                 console.log(err);
             });
     }
@@ -126,37 +119,28 @@ class ConnectedOrder extends Component {
                 }}>
                     <LocalMallIcon></LocalMallIcon>
 
+                    Order Information <br/>
+                    {" "}
 
-        return (
-            <div style={{ padding: 10 }}>
-                <div style={{ fontSize: 24, marginTop: 10 }}>
-
-                    Order Information
                 </div>
+
+
+
 
                 <div
                     style={{
                         height: "100%",
                         display: "flex",
-
                         marginLeft: 50,
-
-                        marginLeft: 15,
-
                         flexDirection: "column"
                     }}
                 >
                     <div
                         style={{
-
                             marginTop: 20,
                             width: 150,
                             padding: 10,
                             paddingLeft: 80,
-
-                            width: 150,
-                            padding: 10,
-
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -165,22 +149,15 @@ class ConnectedOrder extends Component {
                         }}
                     >
                         <TextField
-
                             style={textfield}
                             id="filled-basic"
                             label="Shipping address"
                             variant="filled"
                             value={this.state.address}
-
-                            style={{ width: 200, marginLeft: 50 }}
-                            value={this.state.address}
-                            placeholder="Shipping address"
-
                             onChange={e => {
                                 this.setState({ address: e.target.value });
                             }}
                         />
-
 
                         <TextField
                             style={textfieldrest}
@@ -188,18 +165,11 @@ class ConnectedOrder extends Component {
                             label="Delivery method"
                             variant="filled"
                             value={this.state.delivery}
-
-                        <TextField
-                            style={{ width: 200, marginLeft: 50 }}
-                            value={this.state.delivery}
-                            placeholder="Delivery method"
-
                             onChange={e => {
                                 this.setState({ delivery: e.target.value });
                             }}
                         />
                         <TextField
-
                             style={textfieldrest}
                             id="filled-basic"
                             label="City"
@@ -246,78 +216,6 @@ class ConnectedOrder extends Component {
                 <Button
                     color="primary"
                     variant="contained"
-
-                            style={{ width: 200, marginLeft: 50 }}
-                            value={this.state.city}
-                            placeholder="City"
-                            onChange={e => {
-                                this.setState({ city: e.target.value });
-                            }}
-                        />
-                        <TextField
-                            style={{ width: 200, marginLeft: 50 }}
-                            value={this.state.zip}
-                            placeholder="ZIP"
-                            onChange={e => {
-                                this.setState({ zip: e.target.value });
-                            }}
-                        />
-                        <TextField
-                            style={{ width: 200, marginLeft: 50 }}
-                            value={this.state.phoneNumber}
-                            placeholder="Phone Number"
-                            onChange={e => {
-                                this.setState({ phoneNumber: e.target.value });
-                            }}
-                        />
-                        <TextField
-                            style={{ width: 200, marginLeft: 50 }}
-                            value={this.state.paymentMethod}
-                            placeholder="Payment method"
-                            onChange={e => {
-                                this.setState({ paymentMethod: e.target.value });
-                            }}
-                        />
-                    </div>
-                </div>
-                {/*
-          <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Item name</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Quantity</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.checkedOutItems.map((item, index) => {
-              return (
-                <TableRow key={item.id}>
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.price}</TableCell>
-                  <TableCell>{item.quantity}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-
-        <div
-          style={{
-            color: "#504F5A",
-            marginLeft: 5,
-            marginTop: 50,
-            fontSize: 22
-          }}
-        >
-          Total price: {totalPrice} $
-        </div>
-        */}
-
-                <Button
-                    color="primary"
-                    variant="outlined"
-
                     disabled={(this.state.delivery == '' || this.state.address == '' || this.state.city == '' || this.state.zip == '' || this.state.phoneNumber == '' || this.state.paymentMethod == '') }
                     onClick={() => {
                         this.reOrderCartItems();
@@ -334,32 +232,38 @@ class ConnectedOrder extends Component {
 
                         this.makeTheOrder();
                     }}
-
-                    style={{ margin: 5, marginTop: 30, marginLeft: 90 }}
-
-                    style={{ margin: 5, marginTop: 30 }}
-
+                    style={{ margin: 5, marginTop: 5, marginLeft: 90 }}
                 >
                     Purchase
                 </Button>
                 <Button
                     color="secondary"
-
                     variant="contained"
-
-                    variant="outlined"
-
                     //disabled={totalPrice === 0}
                     onClick={() => {
                         this.props.dispatch(setCheckedOutItems([]));
                         this.props.history.push("/");
                     }}
-                    style={{ margin: 5, marginTop: 30 }}
+                    style={{ margin: 5, marginTop: 5 }}
                 >
                     Discard
                 </Button>
-            </div>
 
+                <div style={{
+                    marginTop: 15,
+                    fontSize: 16,
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+
+                    alignItems: "center",
+                }}>
+
+                    Thank you!
+                    {" "}
+
+                </div>
+            </div>
                 </CardActionArea>
 
 
@@ -368,7 +272,6 @@ class ConnectedOrder extends Component {
 
 );
 
-        );
 
     }
 }
