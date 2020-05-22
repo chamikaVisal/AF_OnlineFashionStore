@@ -96,15 +96,15 @@ class ConnectedWishlist extends Component {
         }
 
         return (
-            <div style={{ padding: 10 }}>
-                <div style={{ fontSize: 24, marginTop: 10 }}>
+            <div style={{ padding: 10,justifyContent:'center',alignItems:'center' }}>
+                <div style={{ fontSize: 24, marginTop: 10,fontWeight:'bold',marginBottom:25,justifyContent:'center',alignItems:'center' }}>
                     Wishlist
                 </div>
-                <Table>
+                <Table style={{ backgroundColor: 'yellow',borderRadius:25}}>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Item name</TableCell>
-                            <TableCell>Price</TableCell>
+                            <TableCell style={{fontWeight:'bold'}}>Item name</TableCell>
+                            <TableCell style={{fontWeight:'bold'}}>Price</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -112,11 +112,11 @@ class ConnectedWishlist extends Component {
                             this.state.items.map((item, index) => {
                                 return (
                                     <TableRow key={item._id}>
-                                        <TableCell>{item.prodName}</TableCell>
-                                        <TableCell>{item.prodPrice}</TableCell>
+                                        <TableCell style={{fontWeight:'bold'}}>{item.prodName}</TableCell>
+                                        <TableCell style={{fontWeight:'bold'}}>{item.prodPrice}</TableCell>
                                         <TableCell>
                                             <Button
-                                                color="primary"
+                                                // color="primary"
                                                 variant="outlined"
                                                 onClick={
                                                     () => {
@@ -132,9 +132,10 @@ class ConnectedWishlist extends Component {
                                                         cartItem = null
                                                     }
                                                 }
-                                                style={{ margin: 3, marginTop: 20 }}
+                                                style={{ margin: 3, marginTop: 20,backgroundColor: '#006efc' }}
                                             >
-                                                Purchase
+                                                <div style={{ color: 'white' }}>Purchase</div>
+
                                             </Button>
                                         </TableCell>
                                     </TableRow>
