@@ -8,15 +8,15 @@ import javax.validation.constraints.Size;
  */
 public class AddProductRequest {
     @NotBlank
-    @Size(min = 3, max = 100)
+    @Size(min = 0, max = 100)
     private String prodName;
 
     @NotBlank
-    @Size(min = 3, max = 1000)
+    @Size(min = 0, max = 1000)
     private String prodDescription;
 
     @NotBlank
-    @Size(min = 3, max = 10)
+    @Size(min = 0, max = 10)
     private String prodPrice;
 
     private String prodCategory;
