@@ -122,7 +122,8 @@ class ConnectedAddDiscountForm extends Component {
                                     alert("Discount not added successfully!");
                                     return;
 
-                                };
+                                }
+
                                 //initiate signup
                                 console.log('Add a new DISCOUNT');
                                 alert("Discount added successfully!");
