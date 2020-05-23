@@ -1,0 +1,43 @@
+
+
+.left-part {
+    display: flex;
+    flex: 3;
+    align-items: center;
+}
+
+.right-part {
+    display: flex;
+    flex: 1;
+    width:150px;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.verticle-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom_choose{
+    border: 1px solid #cccccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #babbbd;
+    align-content: center;
+
+}
+
+.addProduct{
+    border: 2px solid #a0a0a3;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    width: 40%;
+    alignment: center;
+
+}
+
+ 

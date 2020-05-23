@@ -29,7 +29,7 @@ class ConnectedAddProductForm extends Component {
         console.log(this.props.loggedInUser.roles);
     }
 
-    //create a new Store Manager
+    //Add new product to the system
     createNewProduct(prodName, prodDescription, prodPrice, prodCategory, accessToken, prodImage) {
         console.log('Data of the request @ API')
         console.log('(1) ' + prodName + ' (2) ' + prodDescription + ' (3) ' + prodPrice + ' (4) ' + prodCategory + ' (5) ' + 'Bearer ' + accessToken + ' (6) ' + 'prodImage ' + prodImage)
