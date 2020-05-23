@@ -7,67 +7,57 @@ import Button from "@material-ui/core/Button";
 import { setLoggedInUser } from "../../Redux/Actions";
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-//imports
-import axios from 'axios';
 import Card from "@material-ui/core/es/Card/Card";
 import CardActionArea from "@material-ui/core/es/CardActionArea/CardActionArea";
-import login_image from "../../Images/cover.jpg"
+import login_image from "../../Images/login_cover.jpg"
 
+//Axios
+import axios from 'axios';
 
-class ConnectedLogin extends Component {
-
+class ConnectedSignup extends Component {
     state = {
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
-        redirectToReferrer: false,
-        isUserLoggedIn: false
+        redirectToReferrer: false
     };
 
-
-    async getUserLoggedIn() {
-
-        const { from } = this.props.location.state || { from: { pathname: "/" } };
-        axios.post(
-            'http://localhost:8080/auth/login',
-            { username: this.state.email, password: this.state.password },
-            { 'Content-Type': 'application/json' })
+    async getUserSignedIn() {
+        axios.post('http://localhost:8080/auth/signup', { firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, password: this.state.password }, { 'Content-Type': 'application/json' })
             .then((response) => {
+                console.log("Success Signup");
                 console.log(response.data);
-                this.props.dispatch(setLoggedInUser({
-                    id: response.data.id,
-                    username: response.data.username,
-                    email: response.data.email,
-                    roles: response.data.roles[0],
-                    accessToken: response.data.accessToken,
-                    tokenType: response.data.tokenType,
-                }));
-                this.setState(() => ({
-                    redirectToReferrer: true
-                }));
-                this.props.history.push("/");
-                return <Redirect to={from} />;
+                this.props.history.push("/login");
             }, (err) => {
+                console.log("Failed Signup")
                 console.log(err);
                 this.setState(() => ({
-                    redirectToReferrer: false
-                }));
-                this.setState(() => ({
                     email: '',
-                    password: ''
+                    password: '',
+                    firstName: '',
+                    lastName: ''
                 }));
                 return;
             });
-    };
+    }
 
     render() {
-
         const { from } = this.props.location.state || { from: { pathname: "/" } };
 
         const cardStyle={
             width: 400,
-            height: 400,
+            height: 450,
             marginLeft: 450,
             marginTop: 100,
+        }
+
+        const FirstName={
+            width: 300,
+        }
+
+        const LastName={
+            width: 300,
         }
 
         const emailText={
@@ -78,6 +68,8 @@ class ConnectedLogin extends Component {
             width: 300,
         }
 
+
+
         // If user was authenticated, redirect her to where she came from.
         if (this.state.redirectToReferrer === true) {
             return <Redirect to={from} />;
@@ -85,13 +77,11 @@ class ConnectedLogin extends Component {
 
         return (
             <div style={{backgroundImage:`url(${login_image})`}}>
-
-
                 <Card style={cardStyle}>
-
-            <Card style={cardStyle}>
-
-                <CardActionArea>
+                    <CardActionArea>
+                        {/*<CardMedia style={cover}>*/}
+                        {/*    <img src={login_image} style={photo}/>*/}
+                        {/*</CardMedia>*/}
             <div style={{
                 height: "100%",
                 display: "flex",
@@ -101,7 +91,7 @@ class ConnectedLogin extends Component {
             }}>
                 <div
                     style={{
-                        height: 300,
+                        height: 380,
                         width: 200,
                         padding: 30,
                         display: "flex",
@@ -110,9 +100,7 @@ class ConnectedLogin extends Component {
                         flexDirection: "column"
                     }}
                 >
-                    <Avatar
-
-                        style={{ marginBottom: 10, backgroundColor:'blue' }}>
+                    <Avatar style={{ marginBottom: 10, backgroundColor:'blue' }}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <div
@@ -123,15 +111,40 @@ class ConnectedLogin extends Component {
                         }}
                     >
                         {" "}
-                        Log in
+                        Signup
                         {" "}
                     </div>
+                    <TextField
+                        style={FirstName}
+                        id="outlined-basic"
+                        label="Enter your first name here"
+                        variant="outlined"
+                        value={this.state.firstName}
+                        placeholder="First Name"
+                        onChange={e => {
+                            this.setState({ firstName: e.target.value });
+                        }}
+                    />
+                    <br/>
+                    <TextField
+                        style={LastName}
+                        id="outlined-basic"
+                        label="Enter your last name here"
+                        variant="outlined"
+                        value={this.state.lastName}
+                        placeholder="Last Name"
+                        onChange={e => {
+                            this.setState({ lastName: e.target.value });
+                        }}
+                    />
+                    <br/>
                     <TextField
                         style={emailText}
                         id="outlined-basic"
                         label="Enter your email address here"
                         variant="outlined"
                         value={this.state.email}
+                        placeholder="Email"
                         onChange={e => {
                             this.setState({ email: e.target.value });
                         }}
@@ -143,42 +156,43 @@ class ConnectedLogin extends Component {
                         label="Enter your password here"
                         variant="outlined"
                         value={this.state.password}
-                        type="password"
+                        type="Password"
+                        placeholder="Password"
                         onChange={e => {
                             this.setState({ password: e.target.value });
                         }}
                     />
-                    <br/>
                     <Button
-                        variant = "contained"
                         style={{ marginTop: 20, width: 200 }}
+                        variant = "contained"
                         color="primary"
                         onClick={() => {
-                            //validation
+                            //form validation
                             if (this.state.password.trim().length == 0 || this.state.email.trim().length == 0) {
                                 return;
                             };
-                            //initiate login request
-                            this.getUserLoggedIn()
+                            //initiate signup
+                            console.log('At the Form');
+                            console.log(this.state.firstName, this.state.lastName, this.state.email, this.state.password);
+                            this.getUserSignedIn();
 
                         }}
                     >
-                        Log in
+                        Signup
                     </Button>
                     {this.state.wrongCred && (
                         <div style={{ color: "red" }}>Wrong username and/or password</div>
                     )}
                 </div>
             </div>
-                </CardActionArea>
+                    </CardActionArea>
 
 
-            </Card>
+                </Card>
             </div>
-
         );
     }
 }
-const Login = withRouter(connect()(ConnectedLogin));
+const Signup = withRouter(connect()(ConnectedSignup));
 
-export default Login;
+export default Signup;
