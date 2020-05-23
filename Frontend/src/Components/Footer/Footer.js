@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+// import {NavLink, withRouter} from "react-router-dom";
 import "./Footer.css";
+import cartImage from "../../Images/logo2.png";
+
+// import {connect} from "react-redux";
 
 class Footer extends Component {
     render() {
@@ -16,82 +19,28 @@ class Footer extends Component {
                     display: "flex"
                 }}
             >
-                <div>
-                    <div
-                        style={{ color: "#504F5A", fontWeight: "bold", marginBottom: 10 }}
-                    >
+                {/*<div style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>*/}
 
-                    </div>
-                    <NavLink
-                        to={"/payment"}
-                        exact
-                        style={{
-                            textDecoration: "none",
-                            color: "rgb(32, 32, 34)"
-                        }}
-                        activeStyle={{
-                            color: "#4282ad",
-                            textDecoration: "underline"
-                        }}
-                    >
-                        <div className="footerItem"> </div>
-                    </NavLink>
-                    <NavLink
-                        to={"/delivery"}
-                        exact
-                        style={{
-                            textDecoration: "none",
-                            color: "rgb(32, 32, 34)"
-                        }}
-                        activeStyle={{
-                            color: "#4282ad",
-                            textDecoration: "underline"
-                        }}
-                    >
-                        <div className="footerItem"> </div>
-                    </NavLink>
-                </div>
-                <div>
-                    <div
-                        style={{ color: "#504F5A", fontWeight: "bold", marginBottom: 10 }}
-                    >
+               <div style={{ textAlign: 'left'}}>
+                 <div style={{ fontWeight: 'bold', color: 'blue' }}>Online Fashion Store</div>
+                 <img
+              src={cartImage}
+              alt={"Logo"}
+              style={{justifyContent:'center',alignItems:'center' }}
 
-                    </div>
-                    <NavLink
-                        to={"/info"}
-                        exact
-                        style={{
-                            textDecoration: "none",
-                            color: "rgb(32, 32, 34)"
-                        }}
-                        activeStyle={{
-                            color: "#4282ad",
-                            textDecoration: "underline"
-                        }}
-                    >
-                        <div className="footerItem"> </div>
-                    </NavLink>
-                </div>
-                <div>
-                    <div
-                        style={{ color: "#504F5A", fontWeight: "bold", marginBottom: 10 }}
-                    >
+            />
+               </div>
+             <br/>
 
-                    </div>
-                    <a
-                        href="http://www.facebook.com"
-                        target="blank"
-                        style={{
-                            textDecoration: "none",
-                            color: "rgb(32, 32, 34)"
-                        }}
-                    >
-                        <div className="footerItem"> </div>
-                    </a>
-                </div>
+                 <div style={{ fontWeight: 'bold'}}>Email us : hello@onlinestore.com</div>
+                <div style={{ fontWeight: 'bold'}}>Contact us on 077 77 77 777</div>
+
+                {/*</div>*/}
+
+               
             </div>
         );
     }
 }
-
+//const Footer = withRouter(connect(mapStateToProps)(Footer));
 export default Footer;
