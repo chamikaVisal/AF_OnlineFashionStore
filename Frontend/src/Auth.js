@@ -9,14 +9,17 @@ const Auth = {
         if (password.trim().length == 0 || email.trim().length == 0) {
             return;
         };
+
         axios.post('http://localhost:8080/auth/login',{ username: email, password: password }, {'Content-Type': 'application/json'})
             .then((response) => {
                 console.log(response.data);
                 return true;
+
             }, (err) => {
                 console.log(err);
                 return false;
             });
+
 
         this._isAuthenticated = true;
         setTimeout(
@@ -60,6 +63,7 @@ const Auth = {
                 console.log(error);
                 return false;
             });
+
     },
 
     signout(cb) {
