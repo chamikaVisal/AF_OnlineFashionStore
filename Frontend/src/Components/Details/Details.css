@@ -1,0 +1,7 @@
+.show-btn {
+    padding : 1px;
+    flex-direction: "column"
+}
+.hide-btn {
+    display : none
+}

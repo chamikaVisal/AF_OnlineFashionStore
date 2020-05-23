@@ -18,7 +18,6 @@ const Auth = {
                 return false;
             });
 
-
         this._isAuthenticated = true;
         setTimeout(
             () =>
@@ -61,7 +60,6 @@ const Auth = {
                 console.log(error);
                 return false;
             });
-
     },
 
     signout(cb) {
