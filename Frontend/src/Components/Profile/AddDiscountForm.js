@@ -27,7 +27,7 @@ class ConnectedAddDiscountForm extends Component {
         console.log(this.props.loggedInUser.roles);
     }
 
-    //create a new Store Manager
+    //Add discount to the system
     addDiscount(productId, discountName, discountValue, accessToken) {
         console.log('Data of the request @Discount')
         console.log('(1) ' + productId + ' (2) ' + discountName + ' (3) ' + discountValue + ' (4) ' + accessToken)
@@ -121,9 +121,7 @@ class ConnectedAddDiscountForm extends Component {
                                 if (this.state.productId.trim().length == 0 || this.state.discountName.trim().length == 0 || this.state.discountValue.trim().length == 0) {
                                     alert("Discount not added successfully!");
                                     return;
-
                                 }
-
                                 //initiate signup
                                 console.log('Add a new DISCOUNT');
                                 alert("Discount added successfully!");
