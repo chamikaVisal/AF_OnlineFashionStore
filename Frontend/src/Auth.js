@@ -9,73 +9,17 @@ const Auth = {
         if (password.trim().length == 0 || email.trim().length == 0) {
             return;
         };
-        //sending POST request for login.
-        /*
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username: email, password: password })
-        };
-
-        fetch('http://localhost:8080/auth/login', requestOptions)
-        .then((response) => {
-          console.log(response.json());
-          console.log('Success');
-          console.log(response.body);
-          console.log(response.message);
-          if(response.message == "User registered successfully!") {
-            this.props.history.push("/login");
-            return true;
-          } else {
-            return;
-          }
-        }, (error) => {
-          console.log('Failed');
-          console.log(error);
-          return;
-        });
-
-        fetch('http://localhost:8080/auth/login', requestOptions)
-          .then(response => {
-            console.log("RAW RESPONSE")
-            response.json()
-            console.log(response)
-            console.log("MAPPED RESPONSE")
-            console.log(response.body)
-          })
-          .then(data => {
-            console.log("DATA")
-            console.log(data.body)
-          });
-          */
 
         axios.post('http://localhost:8080/auth/login',{ username: email, password: password }, {'Content-Type': 'application/json'})
             .then((response) => {
                 console.log(response.data);
                 return true;
-                //console.log(response.status);
-                //console.log(response.statusText);
-                //console.log(response.headers);
-                //console.log(response.config);
+
             }, (err) => {
                 console.log(err);
                 return false;
             });
-        /*
-        axios({
-          method: 'post',
-          headers: { 'Content-Type': 'application/json' },
-          url: 'http://localhost:8080/auth/login',
-          data: { email: this.name, password: (this.pass) }
-        })
-        .then((response) => {
-          console.log("Success");
-          console.log(response);
-        }, (error) => {
-          console.log("Failed");
-          console.log(error);
-        });
-        */
+
 
         this._isAuthenticated = true;
         setTimeout(
@@ -119,17 +63,7 @@ const Auth = {
                 console.log(error);
                 return false;
             });
-        /*
-        this._isAuthenticated = true;
-        setTimeout(
-          () =>
-            cb({
-              name: name,
-              password: pass
-            }),
-          100
-        );
-        */
+
     },
 
     signout(cb) {
