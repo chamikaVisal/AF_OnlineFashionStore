@@ -2,6 +2,7 @@ package com.giga.FashionStore.security;
 
 import com.giga.FashionStore.repository.RoleRepository;
 import com.giga.FashionStore.service.Admin;
+import com.giga.FashionStore.service.Manager;
 import com.giga.FashionStore.service.UserDetails;
 import com.giga.FashionStore.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,16 @@ public class AuthProvider implements AuthenticationProvider {
                 .toString();
 
         // if admin
-        if ("admin".equals(username) && "giga".equals(password)) {
-            UserDetails adminUserDetails = Admin.getAdmin(roleRepository);
+//        if ("admin".equals(username) && "giga".equals(password)) {
+//            UserDetails adminUserDetails = Admin.getAdmin(roleRepository);
+//
+//            return new UsernamePasswordAuthenticationToken
+//                    (adminUserDetails, adminUserDetails.getPassword(), adminUserDetails.getAuthorities());
+//        }
+
+        // if store manager
+        if ("manager".equals(username) && "giga".equals(password)) {
+            UserDetails adminUserDetails = Manager.getManager(roleRepository);
 
             return new UsernamePasswordAuthenticationToken
                     (adminUserDetails, adminUserDetails.getPassword(), adminUserDetails.getAuthorities());
