@@ -27,8 +27,8 @@ import javax.validation.Valid;
 public class ManagerController {
     @Autowired
     ProductRepository productRepository;
-    @Autowired
-    CategoryRepository categoryRepository;
+//    @Autowired
+//    CategoryRepository categoryRepository;
     @Autowired
     DiscountRepository discountRepository;
     @Autowired
@@ -51,11 +51,11 @@ public class ManagerController {
             product.setProdImage(request.getProdImage());
         }
 
-        Category category = categoryRepository.findByCategoryName(request.getProdCategory());
-        if (category == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).
-                    body(new MessageResponse("Category not found!"));
-        }
+//        Category category = categoryRepository.findByCategoryName(request.getProdCategory());
+//        if (category == null) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).
+//                    body(new MessageResponse("Category not found!"));
+//        }
         product.setProdCategory(category);
 
         productRepository.save(product);
