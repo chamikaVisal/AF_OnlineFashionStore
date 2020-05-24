@@ -224,11 +224,11 @@ class ConnectedDetails extends Component {
                 <div style={{ display: "flex" }}>
 
                     <img src={this.state.item.prodImage} alt="" width={250} height={250}
-                        style={{
-                            border: "1px solid lightgray",
-                            borderRadius: "5px",
-                            objectFit: "cover"
-                        }} />
+                         style={{
+                             border: "1px solid lightgray",
+                             borderRadius: "5px",
+                             objectFit: "cover"
+                         }} />
 
                     <div
                         style={{

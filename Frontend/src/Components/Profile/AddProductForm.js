@@ -7,8 +7,6 @@ import axios from 'axios';
 //redux
 import { connect } from "react-redux";
 
-//const fileUpload = require('fuctbase64');
-
 //Get the state from redux store.
 const mapStateToProps = state => {
     return {
@@ -31,7 +29,7 @@ class ConnectedAddProductForm extends Component {
         console.log(this.props.loggedInUser.roles);
     }
 
-    //create a new Store Manager
+    //Add new product to the system
     createNewProduct(prodName, prodDescription, prodPrice, prodCategory, accessToken, prodImage) {
         console.log('Data of the request @ API')
         console.log('(1) ' + prodName + ' (2) ' + prodDescription + ' (3) ' + prodPrice + ' (4) ' + prodCategory + ' (5) ' + 'Bearer ' + accessToken + ' (6) ' + 'prodImage ' + prodImage)
@@ -55,7 +53,14 @@ class ConnectedAddProductForm extends Component {
                 console.log('SUCCESS: create a new product');
                 console.log(response.data);
                 alert("Product added successfully!");
-                //window.location.reload(false);
+                this.setState(() => ({
+                    prodName: '',
+                    prodDescription: '',
+                    prodPrice: '',
+                    prodCategory: '',
+                    imgUpload: '',
+                }));
+
             }, (err) => {
                 console.log('ERROR: create a new product');
                 console.log(err);

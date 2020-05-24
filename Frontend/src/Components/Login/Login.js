@@ -59,21 +59,6 @@ class ConnectedLogin extends Component {
             });
     };
 
-    // CheckTextInput = () => {
-    //     //Handler for the Submit onPress
-    //     if (this.state.TextInputName != '') {
-    //         //Check for the Name TextInput
-    //         if (this.state.TextInputEmail != '') {
-    //             //Check for the Email TextInput
-    //             alert('Success')
-    //         } else {
-    //             alert('Please Enter Email');
-    //         }
-    //     } else {
-    //         alert('Please Enter Name');
-    //     }
-    // };
-
     render() {
 
         const { from } = this.props.location.state || { from: { pathname: "/" } };
@@ -100,7 +85,12 @@ class ConnectedLogin extends Component {
 
         return (
             <div style={{backgroundImage:`url(${login_image})`}}>
+
+
+                <Card style={cardStyle}>
+
             <Card style={cardStyle}>
+
                 <CardActionArea>
             <div style={{
                 height: "100%",
@@ -185,6 +175,7 @@ class ConnectedLogin extends Component {
 
             </Card>
             </div>
+
         );
     }
 }
