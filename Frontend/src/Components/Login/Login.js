@@ -86,11 +86,7 @@ class ConnectedLogin extends Component {
         return (
             <div style={{backgroundImage:`url(${login_image})`}}>
 
-
                 <Card style={cardStyle}>
-
-            <Card style={cardStyle}>
-
                 <CardActionArea>
             <div style={{
                 height: "100%",
